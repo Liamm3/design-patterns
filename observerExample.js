@@ -5,16 +5,17 @@ const lib_1 = require("./lib/");
 class WeatherServer extends lib_1.BaseSubject {
     constructor() {
         super(...arguments);
-        this.weather = 52.2;
+        this.weather = 30;
     }
-    newWeatherData(temperature) {
+    publishWeather(temperature) {
+        console.log("Publish new weather data:", temperature);
         this.weather = temperature;
         this.notify();
     }
 }
-class WeatherClient {
+class WeatherClient extends lib_1.BaseObserver {
     update(subject) {
-        console.log("New weather data:", subject.weather);
+        console.log("Got weather data:", subject.weather);
     }
 }
 function runExample() {
@@ -24,9 +25,10 @@ function runExample() {
     const weatherClientThree = new WeatherClient();
     weatherServer.attach(weatherClientOne);
     weatherServer.attach(weatherClientTwo);
-    weatherServer.newWeatherData(32);
-    weatherServer.detach(weatherClientTwo);
     weatherServer.attach(weatherClientThree);
-    weatherServer.newWeatherData(31);
+    weatherServer.publishWeather(51);
+    weatherServer.detach(weatherClientOne);
+    weatherServer.detach(weatherClientTwo);
+    weatherServer.publishWeather(23);
 }
 exports.runExample = runExample;

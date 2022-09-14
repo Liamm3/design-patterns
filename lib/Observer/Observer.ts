@@ -1,6 +1,5 @@
-import { Subject } from "./Subject";
+import { BaseSubject } from "./Subject";
 
-export interface IObserver {
-  update(subject: Subject): void;
+export abstract class BaseObserver {
+  abstract update(subject: BaseSubject): void;
 }
-

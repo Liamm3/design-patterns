@@ -1,17 +1,18 @@
-import { IObserver, BaseSubject } from "./lib/";
+import { BaseObserver, BaseSubject } from "./lib/";
 
 class WeatherServer extends BaseSubject {
-  weather: number = 52.2;
+  weather: number = 30;
 
-  newWeatherData(temperature: number) {
+  publishWeather(temperature: number) {
+    console.log("Publish new weather data:", temperature);
     this.weather = temperature;
     this.notify();
   }
 }
 
-class WeatherClient implements IObserver {
+class WeatherClient extends BaseObserver {
   update(subject: WeatherServer): void {
-    console.log("New weather data:", subject.weather);
+    console.log("Got weather data:", subject.weather);
   }
 }
 
@@ -23,11 +24,12 @@ export function runExample() {
 
   weatherServer.attach(weatherClientOne);
   weatherServer.attach(weatherClientTwo);
-
-  weatherServer.newWeatherData(32);
-
-  weatherServer.detach(weatherClientTwo);
   weatherServer.attach(weatherClientThree);
 
-  weatherServer.newWeatherData(31);
+  weatherServer.publishWeather(51);
+
+  weatherServer.detach(weatherClientOne);
+  weatherServer.detach(weatherClientTwo);
+
+  weatherServer.publishWeather(23);
 }
