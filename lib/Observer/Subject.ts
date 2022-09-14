@@ -1,29 +1,30 @@
-import { Observer } from "./Observer";
+import { IObserver } from "./Observer";
 
 interface ISubject {
-  attach(observer: Observer): void;
-  detach(observer: Observer): void;
+  attach(observer: IObserver): void;
+  detach(observer: IObserver): void;
   notify(): void;
 }
 
-export class Subject implements ISubject {
-  public state: number = 0;
-  private observers: Observer[] = [];
+export abstract class BaseSubject implements ISubject {
+  private observers: IObserver[] = [];
 
-   attach(observer: Observer): void {
+   attach(observer: IObserver): void {
     if (this.observers.includes(observer)) {
       return console.log("Observer has been attached already.");
     }
 
+    console.log("Attach:", observer);
     this.observers.push(observer);
   }
 
-  detach(observer: Observer): void {
+  detach(observer: IObserver): void {
     const observerIndex = this.observers.indexOf(observer);
     if (observerIndex === -1) {
-      return console.log("Observer is not attached to subject.")
+      return console.log("Observer is not attached to subject.");
     }
 
+    console.log("Detach:", observer);
     this.observers.splice(observerIndex, 1);
   }
 
@@ -32,10 +33,4 @@ export class Subject implements ISubject {
       observer.update(this);
     }
   }
-
-  changeState(): void {
-    this.state++;
-    this.notify();
-  }
 }
-

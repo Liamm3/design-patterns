@@ -1,13 +1,4 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const lib_1 = require("./lib/");
-const numberSubject = new lib_1.Subject();
-const observerOne = new lib_1.Observer();
-const observerTwo = new lib_1.Observer();
-numberSubject.attach(observerOne);
-numberSubject.attach(observerOne);
-numberSubject.attach(observerTwo);
-numberSubject.changeState();
-numberSubject.changeState();
-numberSubject.changeState();
-numberSubject.changeState();
+const observerExample_1 = require("./observerExample");
+(0, observerExample_1.runExample)();
