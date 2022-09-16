@@ -1,4 +1,4 @@
-import { BaseObserver, BaseSubject } from "./lib/";
+import { IObserver, BaseSubject } from "./lib/";
 
 class WeatherServer extends BaseSubject {
   weather: number = 30;
@@ -10,7 +10,7 @@ class WeatherServer extends BaseSubject {
   }
 }
 
-class WeatherClient extends BaseObserver {
+class WeatherClient implements IObserver {
   update(subject: WeatherServer): void {
     console.log("Got weather data:", subject.weather);
   }

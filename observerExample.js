@@ -13,7 +13,7 @@ class WeatherServer extends lib_1.BaseSubject {
         this.notify();
     }
 }
-class WeatherClient extends lib_1.BaseObserver {
+class WeatherClient {
     update(subject) {
         console.log("Got weather data:", subject.weather);
     }

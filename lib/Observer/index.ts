@@ -1,2 +1,2 @@
-export { BaseSubject } from "./Subject";
-export { BaseObserver } from "./Observer";
+export { BaseSubject } from "./BaseSubject";
+export { IObserver } from "./IObserver";

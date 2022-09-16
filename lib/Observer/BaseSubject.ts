@@ -1,15 +1,15 @@
-import { BaseObserver } from "./Observer";
+import { IObserver } from "./IObserver";
 
 interface ISubject {
-  attach(observer: BaseObserver): void;
-  detach(observer: BaseObserver): void;
+  attach(observer: IObserver): void;
+  detach(observer: IObserver): void;
   notify(): void;
 }
 
 export abstract class BaseSubject implements ISubject {
-  private observers: BaseObserver[] = [];
+  private observers: IObserver[] = [];
 
-   attach(observer: BaseObserver): void {
+   attach(observer: IObserver): void {
     if (this.observers.includes(observer)) {
       return console.log("Observer has been attached already.");
     }
@@ -18,7 +18,7 @@ export abstract class BaseSubject implements ISubject {
     this.observers.push(observer);
   }
 
-  detach(observer: BaseObserver): void {
+  detach(observer: IObserver): void {
     const observerIndex = this.observers.indexOf(observer);
     if (observerIndex === -1) {
       return console.log("Observer is not attached to subject.");
