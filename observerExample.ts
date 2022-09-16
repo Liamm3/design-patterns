@@ -16,7 +16,7 @@ class WeatherClient implements IObserver {
   }
 }
 
-export function runExample() {
+export function run() {
   const weatherServer = new WeatherServer();
   const weatherClientOne = new WeatherClient();
   const weatherClientTwo = new WeatherClient();

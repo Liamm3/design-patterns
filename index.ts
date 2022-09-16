@@ -1,3 +1,5 @@
-import { runExample } from "./observerExample";
+import * as observer from "./observerExample";
+import * as state from "./stateExample";
 
-runExample();
+// observer.run();
+state.run();

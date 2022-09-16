@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.runExample = void 0;
+exports.run = void 0;
 const lib_1 = require("./lib/");
 class WeatherServer extends lib_1.BaseSubject {
     constructor() {
@@ -18,7 +18,7 @@ class WeatherClient {
         console.log("Got weather data:", subject.weather);
     }
 }
-function runExample() {
+function run() {
     const weatherServer = new WeatherServer();
     const weatherClientOne = new WeatherClient();
     const weatherClientTwo = new WeatherClient();
@@ -31,4 +31,4 @@ function runExample() {
     weatherServer.detach(weatherClientTwo);
     weatherServer.publishWeather(23);
 }
-exports.runExample = runExample;
+exports.run = run;

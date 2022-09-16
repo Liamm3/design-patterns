@@ -1,1 +1,1 @@
-export { State } from "./State"
+export { Post, Draft, PendingReview, Published, State } from "./State"
