@@ -21,8 +21,8 @@ export class BlogPost implements IBuildBlogPost {
   }
 
   addTitle(title: string): IBuildBlogPost {
-      this.title = title;
-      return this;
+    this.title = title;
+    return this;
   }
 
   addTag(tag: string): IBuildBlogPost {
@@ -31,17 +31,17 @@ export class BlogPost implements IBuildBlogPost {
   }
 
   addAuthor(author: string): IBuildBlogPost {
-      this.author = author;
-      return this;
+    this.author = author;
+    return this;
   }
 
   addSubtitle(subtitle: string): IBuildBlogPost {
-      this.subtitle = subtitle;
-      return this;
+    this.subtitle = subtitle;
+    return this;
   }
 
   addContent(content: string): IBuildBlogPost {
-      this.content = content;
-      return this;
+    this.content = content;
+    return this;
   }
 }

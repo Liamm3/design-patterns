@@ -1,8 +1,8 @@
 import { Draft, PendingReview, Post, Published } from "./lib/"
 
-const isDraft = (post: Post) => post.status instanceof Draft;
-const isPendingReview = (post: Post) => post.status instanceof PendingReview;
-const isPublished = (post: Post) => post.status instanceof Published;
+const isDraft = (post: Post): boolean => post.status instanceof Draft;
+const isPendingReview = (post: Post): boolean => post.status instanceof PendingReview;
+const isPublished = (post: Post): boolean => post.status instanceof Published;
 
 export function run() {
   const post = new Post();

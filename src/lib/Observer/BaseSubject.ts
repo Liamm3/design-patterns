@@ -16,7 +16,6 @@ export abstract class BaseSubject {
     if (observerIndex === -1) {
       return console.log("Observer is not attached to subject.");
     }
-
     console.log("Detach:", observer);
     this.observers.splice(observerIndex, 1);
   }
