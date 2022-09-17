@@ -11,21 +11,24 @@ class WeatherServer extends BaseSubject {
 }
 
 class WeatherClient implements IObserver {
+  constructor(
+    public name: string
+  ) {}
+
   update(subject: WeatherServer): void {
-    console.log("Got weather data:", subject.weather);
+    console.log(`${this.name} got weather data: ${subject.weather}°C.`);
   }
 }
 
 export function run() {
   const weatherServer = new WeatherServer();
-  const weatherClientOne = new WeatherClient();
-  const weatherClientTwo = new WeatherClient();
-  const weatherClientThree = new WeatherClient();
+  const weatherClientOne = new WeatherClient("Berlin");
+  const weatherClientTwo = new WeatherClient("Hamburg");
+  const weatherClientThree = new WeatherClient("Lüneburg");
 
   weatherServer.attach(weatherClientOne);
   weatherServer.attach(weatherClientTwo);
   weatherServer.attach(weatherClientThree);
-
   weatherServer.publishWeather(51);
 
   weatherServer.detach(weatherClientOne);

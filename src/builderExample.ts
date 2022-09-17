@@ -1,4 +1,4 @@
-import { BlogPost } from "./lib";
+import { BlogPost } from "./lib/";
 
 export function run() {
   const blogPostOne = new BlogPost()
@@ -7,8 +7,10 @@ export function run() {
     .addContent("Lorem lorem, ipsum ipsum.")
     .addTag("Science")
     .addTag("Fun");
-  const blogPostTwo = new BlogPost();
-
   console.log(blogPostOne);
+
+  const blogPostTwo = new BlogPost()
+    .addTitle("Yes")
+    .addContent("No.");
   console.log(blogPostTwo);
 }
