@@ -10,7 +10,7 @@ export function run() {
   post.approve();
 
   if (isDraft(post)) {
-    console.log("Could not approve post, because it is still a draft.")
+    console.log("Still Draft")
   } else if (isPendingReview(post)) {
 
   } else if (isPublished(post)) {

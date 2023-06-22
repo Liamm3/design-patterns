@@ -33,7 +33,6 @@ export class Published implements State {
   }
 };
 
-
 export class Post {
   status: State = new Draft();
   content: string = "";
